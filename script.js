@@ -12,8 +12,14 @@ const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load("assets/texture.jpg");
 
 // Load shaders
-const vertexShader = await fetch('shaders/vertexShader.glsl').then(res => res.text());
-const fragmentShader = await fetch('shaders/fragmentShader.glsl').then(res => res.text());
+async function loadShaders() {
+  const vertexShader = await fetch('shaders/vertexShader.glsl').then(res => res.text());
+  const fragmentShader = await fetch('shaders/fragmentShader.glsl').then(res => res.text());
+
+  // Now you can use these shaders safely.
+}
+
+loadShaders();  // Call the async function
 
 // Create plane with shader material
 const geometry = new THREE.PlaneGeometry(2, 2);
